@@ -31,6 +31,15 @@ def lineplot(df, headers):
     plt.xlabel("Year")
     plt.ylabel("GDP per capita")
     
+    # removing white space from left and right using pandas min and max function
+    plt.xlim(min(df["Year"]), df["Year"].max())
+
+    # set Title
+    plt.title('Evolution of GDP per head for USA and Asian countries')
+    
+    # save as png
+    plt.savefig("line plot.png")
+    
     # set legend
     plt.legend()
 
@@ -52,6 +61,12 @@ def pieplot(df, headers):
     # plotting
     for head in headers:
         plt.pie(df['GDP'], labels=headers)
+        
+    # set title
+    plt.title('GDP ' + str(df['Time'][1]))
+
+    # save as png
+    plt.savefig("pie plot.png")
 
     plt.show()
 
@@ -72,6 +87,19 @@ def bar_stack_plot(bang_pop):
 
     plt.bar(bang_pop['Time'], bang_pop['Urban Population (millions)'],
             bottom=bang_pop['Rural Population (millions)'], label="Urban")
+    
+    # set title
+    plt.title("Population of Bangladesh")
+
+    # labeling
+    plt.xlabel("Year")
+    plt.ylabel("Population (millions)")
+
+    # set legend
+    plt.legend()
+
+    # save as png
+    plt.savefig("bar stack plot.png")
 
     plt.show()
 
