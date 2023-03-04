@@ -19,6 +19,9 @@ def lineplot(df, headers):
     """ This fuction will create a lineplot.
         It will take two arguments. A dataframe and a list
         containing the headers of the columns to plot.
+
+        My dataframe contains gdp per capita for USA and Asian
+        countries within time series 1961 to 2021.
     """
 
     plt.figure()
@@ -82,9 +85,11 @@ def bar_stack_plot(bang_pop):
 
     plt.figure()
     
+    # Plot rural population
     plt.bar(bang_pop['Time'], bang_pop['Rural Population (millions)'],
             label="Rural")
-
+    
+    # Plot urban population on rural population
     plt.bar(bang_pop['Time'], bang_pop['Urban Population (millions)'],
             bottom=bang_pop['Rural Population (millions)'], label="Urban")
     
@@ -121,6 +126,7 @@ lineplot(gdp, list(gdp.columns)[1:])
 
 
 # read dataset for pie plot
+# we have two different dataframes of total gdp of USA and other four countries in 1980 and 2020
 gdp_2020 = pd.read_csv('gdp_2020.csv')
 gdp_1980 = pd.read_csv('gdp_1980.csv')
 
@@ -134,6 +140,7 @@ pieplot(gdp_1980, list(gdp_1980['Country Name']))
 bang_pop = pd.read_csv('bangladesh_population.csv')
 
 # calculate population in million in bang_pop dataframe
+# it will create two new columns with the population in millions
 bang_pop['Rural Population (millions)'] = bang_pop['Rural population'] / 10e6
 bang_pop['Urban Population (millions)'] = bang_pop['Urban population'] / 10e6
 
